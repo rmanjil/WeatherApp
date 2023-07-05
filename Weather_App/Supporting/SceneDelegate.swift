@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     func appLaunch() {
         
-        window?.rootViewController =  BaseController()
+        window?.rootViewController =  BaseController(baseScreen: BaseScreen(), baseViewModel: BaseViewModel())
         window?.makeKeyAndVisible()
     }
 

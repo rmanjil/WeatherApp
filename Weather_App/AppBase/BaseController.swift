@@ -163,10 +163,6 @@ open class BaseController: UIViewController, StoryboardInitializable {
     }
     
     @objc private func expire(_ sender: NSNotification) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            // Add your code here
-        }
     }
     
     // MARK: - Deinit
