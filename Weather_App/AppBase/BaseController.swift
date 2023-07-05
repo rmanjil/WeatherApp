@@ -8,17 +8,16 @@
 import UIKit
 import Combine
 
-//// 1. make storyboard conforms to this for identification
+// MARK: - Protocols
 public protocol StoryboardIdentifiable {
     var identifier: String { get }
 }
 
-//// 2. protocol to conforms to the storyboard identifier
 public protocol StoryboardInitializable {
     static var storyboardIdentifier: String { get }
 }
 
-//// 3. create extension and implement the initialization
+// MARK: - StoryboardInitializable Extension
 extension StoryboardInitializable where Self: BaseController {
     
     public static var storyboardIdentifier: String {
@@ -33,19 +32,16 @@ extension StoryboardInitializable where Self: BaseController {
     }
 }
 
+// MARK: - BaseController
 open class BaseController: UIViewController, StoryboardInitializable {
     
-    /// The baseView of controller
+    // MARK: - Properties
     private(set) var baseScreen: BaseScreen!
-    
-    /// The baseViewModel of controller
     private(set) var baseViewModel: BaseViewModel!
-    
-    /// The flag to check if the controller was initialized from storyboard
     private let isStoryboardIntialized: Bool
-    
     var isRoot: Bool {  navigationController?.viewControllers.count == 1 }
     
+    // MARK: - UI Components
     private lazy var overlayView: UIView = {
         let view = UIView()
         view.isHidden = true
@@ -62,22 +58,6 @@ open class BaseController: UIViewController, StoryboardInitializable {
         return view
     }()
     
-    var showOverlayView: Bool = false {
-        didSet {
-            view.bringSubviewToFront(overlayView)
-            overlayView.isHidden = !showOverlayView
-            indicate = showOverlayView
-        }
-    }
-    
-    var indicate: Bool = false {
-        didSet {
-            view.bringSubviewToFront(indicator)
-            indicate ? indicator.startAnimating() : indicator.stopAnimating()
-        }
-    }
-    
-    /// The backButton
     lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: .back, style: .plain, target: self, action: #selector(backButtonClicked))
         button.tag = 1
@@ -85,37 +65,17 @@ open class BaseController: UIViewController, StoryboardInitializable {
         return button
     }()
     
-    /// when view is loaded
+    // MARK: - Lifecycle
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
         setupOverlayView()
-        
-        /// setup UI
         setupUI()
-        
-        /// observe screen
         observeScreen()
-        
-        /// observe events
         observeEvents()
-        
         setupBackButton()
-        
-        
     }
     
-    /// Method that will set the viewmodel after initialization from storyboard
-    /// - Parameter viewModel: the viewmodel for the controller
-    func setViewModel(viewModel: BaseViewModel) {
-        guard baseViewModel == nil else { return }
-        baseViewModel = viewModel
-    }
-    
-    /// Initializer for a controller
-    /// - Parameters:
-    ///   - baseView: the view associated with the controller
-    ///   - baseViewModel: viewModel associated with the controller
+    // MARK: - Initializers
     init(baseScreen: BaseScreen, baseViewModel: BaseViewModel) {
         self.baseScreen = baseScreen
         self.baseViewModel = baseViewModel
@@ -123,29 +83,28 @@ open class BaseController: UIViewController, StoryboardInitializable {
         super.init(nibName: nil, bundle: nil)
     }
     
-    /// Not available
     required public init?(coder: NSCoder) {
         self.isStoryboardIntialized = true
         super.init(coder: coder)
     }
     
-    /// Load the base view as the view of controller
+    // MARK: - Methods
+    func setViewModel(viewModel: BaseViewModel) {
+        guard baseViewModel == nil else { return }
+        baseViewModel = viewModel
+    }
+    
     override open func loadView() {
         super.loadView()
         guard !isStoryboardIntialized else { return }
         view = baseScreen
     }
     
-    /// setup trigger
     open func setupUI() {}
-    
-    /// Observer for events
     open func observeEvents() {}
+    func observeScreen() {}
     
-    func observeScreen() {
-        
-    }
-    
+    // MARK: - Private Methods
     private func setupBackButton() {
         if !isRoot {
             navigationItem.leftBarButtonItem = backButton
@@ -167,10 +126,11 @@ open class BaseController: UIViewController, StoryboardInitializable {
         ])
     }
     
-    @objc func backButtonClicked(sender: UIBarButtonItem) {
+    @objc private func backButtonClicked(sender: UIBarButtonItem) {
         pop()
     }
     
+    // MARK: - Navigation
     func pop(animated: Bool = true) {
         navigationController?.popViewController(animated: animated)
     }
@@ -179,26 +139,16 @@ open class BaseController: UIViewController, StoryboardInitializable {
         navigationController?.viewControllers.first(where: { $0 is T }) as? T
     }
     
-    /// Deint call check
-    deinit {
-        debugPrint("De-Initialized --> \(String(describing: self))")
-    }
-}
-
-// MARK: - Alert Method
-extension BaseController {
-    
+    // MARK: - Alert Method
     func alert(title: String, message: String, actions: [Alertable], style: UIAlertController.Style = .alert, titleAttribute: [NSAttributedString.Key: Any]? = nil, messageAttribute: [NSAttributedString.Key: Any]? = nil, completion: ((Alertable) -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         
         if let attributes = titleAttribute {
-            //attributed title
             let attributedTitle = NSAttributedString(string: title, attributes: attributes)
             alertController.setValue(attributedTitle, forKey: "attributedTitle")
         }
         
         if let attributes = messageAttribute {
-            // Attributed message
             let attributedMsg = NSAttributedString(string: message, attributes: attributes)
             alertController.setValue(attributedMsg, forKey: "attributedMessage")
         }
@@ -210,13 +160,17 @@ extension BaseController {
             alertController.addAction(alertAction)
         }
         present(alertController, animated: true, completion: nil)
-        
     }
     
     @objc private func expire(_ sender: NSNotification) {
         DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-
+            guard let self = self else { return }
+            // Add your code here
         }
+    }
+    
+    // MARK: - Deinit
+    deinit {
+        debugPrint("De-Initialized --> \(String(describing: self))")
     }
 }
