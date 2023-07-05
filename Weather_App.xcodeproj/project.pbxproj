@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2A7531A22A5536B9003ABC27 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531A12A5536B9003ABC27 /* BaseController.swift */; };
+		2A7531A42A5539FF003ABC27 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531A32A5539FF003ABC27 /* BaseScreen.swift */; };
+		2A7531A62A553A1E003ABC27 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531A52A553A1E003ABC27 /* BaseViewModel.swift */; };
+		2A7531A92A553A78003ABC27 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531A82A553A78003ABC27 /* UIImage+Extension.swift */; };
+		2A7531AC2A553AE4003ABC27 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531AB2A553AE4003ABC27 /* Alertable.swift */; };
 		2AF5928E2A552EA200DD763E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF5928D2A552EA200DD763E /* AppDelegate.swift */; };
 		2AF592902A552EA200DD763E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF5928F2A552EA200DD763E /* SceneDelegate.swift */; };
 		2AF592972A552EA400DD763E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AF592962A552EA400DD763E /* Assets.xcassets */; };
@@ -36,6 +40,10 @@
 
 /* Begin PBXFileReference section */
 		2A7531A12A5536B9003ABC27 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		2A7531A32A5539FF003ABC27 /* BaseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
+		2A7531A52A553A1E003ABC27 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		2A7531A82A553A78003ABC27 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		2A7531AB2A553AE4003ABC27 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		2AF5928A2A552EA200DD763E /* Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF5928D2A552EA200DD763E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AF5928F2A552EA200DD763E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +86,26 @@
 			isa = PBXGroup;
 			children = (
 				2A7531A12A5536B9003ABC27 /* BaseController.swift */,
+				2A7531A32A5539FF003ABC27 /* BaseScreen.swift */,
+				2A7531A52A553A1E003ABC27 /* BaseViewModel.swift */,
 			);
 			path = AppBase;
+			sourceTree = "<group>";
+		};
+		2A7531A72A553A57003ABC27 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531A82A553A78003ABC27 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2A7531AA2A553AB5003ABC27 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531AB2A553AE4003ABC27 /* Alertable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		2AF592812A552EA200DD763E = {
@@ -105,6 +131,8 @@
 		2AF5928C2A552EA200DD763E /* Weather_App */ = {
 			isa = PBXGroup;
 			children = (
+				2A7531AA2A553AB5003ABC27 /* Protocol */,
+				2A7531A72A553A57003ABC27 /* Extension */,
 				2A7531A02A55367B003ABC27 /* AppBase */,
 				2AF592BE2A5530F100DD763E /* Resource */,
 				2AF592BD2A552F1200DD763E /* Supporting */,
@@ -279,7 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AF5928E2A552EA200DD763E /* AppDelegate.swift in Sources */,
+				2A7531AC2A553AE4003ABC27 /* Alertable.swift in Sources */,
+				2A7531A62A553A1E003ABC27 /* BaseViewModel.swift in Sources */,
 				2A7531A22A5536B9003ABC27 /* BaseController.swift in Sources */,
+				2A7531A92A553A78003ABC27 /* UIImage+Extension.swift in Sources */,
+				2A7531A42A5539FF003ABC27 /* BaseScreen.swift in Sources */,
 				2AF592902A552EA200DD763E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
