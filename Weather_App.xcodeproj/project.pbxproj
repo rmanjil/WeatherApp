@@ -12,6 +12,27 @@
 		2A7531A62A553A1E003ABC27 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531A52A553A1E003ABC27 /* BaseViewModel.swift */; };
 		2A7531A92A553A78003ABC27 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531A82A553A78003ABC27 /* UIImage+Extension.swift */; };
 		2A7531AC2A553AE4003ABC27 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531AB2A553AE4003ABC27 /* Alertable.swift */; };
+		2A7531C72A555447003ABC27 /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531AF2A555446003ABC27 /* Encoding.swift */; };
+		2A7531C82A555447003ABC27 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531B02A555446003ABC27 /* Parameters.swift */; };
+		2A7531C92A555447003ABC27 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531B12A555446003ABC27 /* NetworkingError.swift */; };
+		2A7531CA2A555447003ABC27 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531B32A555446003ABC27 /* Meta.swift */; };
+		2A7531CB2A555447003ABC27 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531B42A555446003ABC27 /* Container.swift */; };
+		2A7531CC2A555447003ABC27 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531B52A555446003ABC27 /* Pagination.swift */; };
+		2A7531CD2A555447003ABC27 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531B62A555446003ABC27 /* ApiResponse.swift */; };
+		2A7531CE2A555447003ABC27 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531B72A555446003ABC27 /* ErrorMessage.swift */; };
+		2A7531CF2A555447003ABC27 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531B92A555446003ABC27 /* Connectivity.swift */; };
+		2A7531D02A555447003ABC27 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531BA2A555446003ABC27 /* KeyChainManager.swift */; };
+		2A7531D12A555447003ABC27 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531BB2A555446003ABC27 /* Logger.swift */; };
+		2A7531D22A555447003ABC27 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531BC2A555446003ABC27 /* Networking.swift */; };
+		2A7531D32A555447003ABC27 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531BE2A555446003ABC27 /* ResponseParser.swift */; };
+		2A7531D42A555447003ABC27 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531BF2A555446003ABC27 /* HTTPMethod.swift */; };
+		2A7531D52A555447003ABC27 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531C02A555446003ABC27 /* TokenManager.swift */; };
+		2A7531D62A555447003ABC27 /* NetworkingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531C22A555446003ABC27 /* NetworkingResponse.swift */; };
+		2A7531D72A555447003ABC27 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531C32A555446003ABC27 /* RequestBuilder.swift */; };
+		2A7531D82A555447003ABC27 /* RequestMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531C42A555446003ABC27 /* RequestMaker.swift */; };
+		2A7531D92A555447003ABC27 /* NetworkingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531C52A555446003ABC27 /* NetworkingConfiguration.swift */; };
+		2A7531DA2A555447003ABC27 /* NetworkingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531C62A555446003ABC27 /* NetworkingRouter.swift */; };
+		2A7531DD2A5554B9003ABC27 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2A7531DC2A5554B9003ABC27 /* SwiftKeychainWrapper */; };
 		2AF5928E2A552EA200DD763E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF5928D2A552EA200DD763E /* AppDelegate.swift */; };
 		2AF592902A552EA200DD763E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF5928F2A552EA200DD763E /* SceneDelegate.swift */; };
 		2AF592972A552EA400DD763E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AF592962A552EA400DD763E /* Assets.xcassets */; };
@@ -44,6 +65,26 @@
 		2A7531A52A553A1E003ABC27 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		2A7531A82A553A78003ABC27 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		2A7531AB2A553AE4003ABC27 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		2A7531AF2A555446003ABC27 /* Encoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoding.swift; sourceTree = "<group>"; };
+		2A7531B02A555446003ABC27 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
+		2A7531B12A555446003ABC27 /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		2A7531B32A555446003ABC27 /* Meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
+		2A7531B42A555446003ABC27 /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		2A7531B52A555446003ABC27 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		2A7531B62A555446003ABC27 /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		2A7531B72A555446003ABC27 /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		2A7531B92A555446003ABC27 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		2A7531BA2A555446003ABC27 /* KeyChainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		2A7531BB2A555446003ABC27 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		2A7531BC2A555446003ABC27 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		2A7531BE2A555446003ABC27 /* ResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
+		2A7531BF2A555446003ABC27 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		2A7531C02A555446003ABC27 /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		2A7531C22A555446003ABC27 /* NetworkingResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingResponse.swift; sourceTree = "<group>"; };
+		2A7531C32A555446003ABC27 /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		2A7531C42A555446003ABC27 /* RequestMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaker.swift; sourceTree = "<group>"; };
+		2A7531C52A555446003ABC27 /* NetworkingConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingConfiguration.swift; sourceTree = "<group>"; };
+		2A7531C62A555446003ABC27 /* NetworkingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRouter.swift; sourceTree = "<group>"; };
 		2AF5928A2A552EA200DD763E /* Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF5928D2A552EA200DD763E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AF5928F2A552EA200DD763E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7531DD2A5554B9003ABC27 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +150,73 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		2A7531AD2A555446003ABC27 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531AE2A555446003ABC27 /* ParameterAndEncoding */,
+				2A7531B12A555446003ABC27 /* NetworkingError.swift */,
+				2A7531B22A555446003ABC27 /* Response */,
+				2A7531B82A555446003ABC27 /* Connectivity */,
+				2A7531BA2A555446003ABC27 /* KeyChainManager.swift */,
+				2A7531BB2A555446003ABC27 /* Logger.swift */,
+				2A7531BC2A555446003ABC27 /* Networking.swift */,
+				2A7531BD2A555446003ABC27 /* Parser */,
+				2A7531BF2A555446003ABC27 /* HTTPMethod.swift */,
+				2A7531C02A555446003ABC27 /* TokenManager.swift */,
+				2A7531C12A555446003ABC27 /* Request */,
+				2A7531C52A555446003ABC27 /* NetworkingConfiguration.swift */,
+				2A7531C62A555446003ABC27 /* NetworkingRouter.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		2A7531AE2A555446003ABC27 /* ParameterAndEncoding */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531AF2A555446003ABC27 /* Encoding.swift */,
+				2A7531B02A555446003ABC27 /* Parameters.swift */,
+			);
+			path = ParameterAndEncoding;
+			sourceTree = "<group>";
+		};
+		2A7531B22A555446003ABC27 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531B32A555446003ABC27 /* Meta.swift */,
+				2A7531B42A555446003ABC27 /* Container.swift */,
+				2A7531B52A555446003ABC27 /* Pagination.swift */,
+				2A7531B62A555446003ABC27 /* ApiResponse.swift */,
+				2A7531B72A555446003ABC27 /* ErrorMessage.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		2A7531B82A555446003ABC27 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531B92A555446003ABC27 /* Connectivity.swift */,
+			);
+			path = Connectivity;
+			sourceTree = "<group>";
+		};
+		2A7531BD2A555446003ABC27 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531BE2A555446003ABC27 /* ResponseParser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		2A7531C12A555446003ABC27 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531C22A555446003ABC27 /* NetworkingResponse.swift */,
+				2A7531C32A555446003ABC27 /* RequestBuilder.swift */,
+				2A7531C42A555446003ABC27 /* RequestMaker.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		2AF592812A552EA200DD763E = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +240,7 @@
 		2AF5928C2A552EA200DD763E /* Weather_App */ = {
 			isa = PBXGroup;
 			children = (
+				2A7531AD2A555446003ABC27 /* Networking */,
 				2A7531AA2A553AB5003ABC27 /* Protocol */,
 				2A7531A72A553A57003ABC27 /* Extension */,
 				2A7531A02A55367B003ABC27 /* AppBase */,
@@ -192,6 +302,9 @@
 			dependencies = (
 			);
 			name = Weather_App;
+			packageProductDependencies = (
+				2A7531DC2A5554B9003ABC27 /* SwiftKeychainWrapper */,
+			);
 			productName = Weather_App;
 			productReference = 2AF5928A2A552EA200DD763E /* Weather_App.app */;
 			productType = "com.apple.product-type.application";
@@ -264,6 +377,9 @@
 				Base,
 			);
 			mainGroup = 2AF592812A552EA200DD763E;
+			packageReferences = (
+				2A7531DB2A5554B9003ABC27 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 2AF5928B2A552EA200DD763E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -306,13 +422,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7531D22A555447003ABC27 /* Networking.swift in Sources */,
+				2A7531C72A555447003ABC27 /* Encoding.swift in Sources */,
+				2A7531D42A555447003ABC27 /* HTTPMethod.swift in Sources */,
+				2A7531CB2A555447003ABC27 /* Container.swift in Sources */,
 				2AF5928E2A552EA200DD763E /* AppDelegate.swift in Sources */,
+				2A7531CD2A555447003ABC27 /* ApiResponse.swift in Sources */,
 				2A7531AC2A553AE4003ABC27 /* Alertable.swift in Sources */,
 				2A7531A62A553A1E003ABC27 /* BaseViewModel.swift in Sources */,
+				2A7531CA2A555447003ABC27 /* Meta.swift in Sources */,
+				2A7531D82A555447003ABC27 /* RequestMaker.swift in Sources */,
+				2A7531D02A555447003ABC27 /* KeyChainManager.swift in Sources */,
+				2A7531CE2A555447003ABC27 /* ErrorMessage.swift in Sources */,
+				2A7531D52A555447003ABC27 /* TokenManager.swift in Sources */,
+				2A7531DA2A555447003ABC27 /* NetworkingRouter.swift in Sources */,
+				2A7531C92A555447003ABC27 /* NetworkingError.swift in Sources */,
 				2A7531A22A5536B9003ABC27 /* BaseController.swift in Sources */,
 				2A7531A92A553A78003ABC27 /* UIImage+Extension.swift in Sources */,
+				2A7531D72A555447003ABC27 /* RequestBuilder.swift in Sources */,
 				2A7531A42A5539FF003ABC27 /* BaseScreen.swift in Sources */,
+				2A7531D92A555447003ABC27 /* NetworkingConfiguration.swift in Sources */,
+				2A7531D12A555447003ABC27 /* Logger.swift in Sources */,
+				2A7531D32A555447003ABC27 /* ResponseParser.swift in Sources */,
+				2A7531CF2A555447003ABC27 /* Connectivity.swift in Sources */,
 				2AF592902A552EA200DD763E /* SceneDelegate.swift in Sources */,
+				2A7531C82A555447003ABC27 /* Parameters.swift in Sources */,
+				2A7531D62A555447003ABC27 /* NetworkingResponse.swift in Sources */,
+				2A7531CC2A555447003ABC27 /* Pagination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +788,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2A7531DB2A5554B9003ABC27 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2A7531DC2A5554B9003ABC27 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A7531DB2A5554B9003ABC27 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2AF592822A552EA200DD763E /* Project object */;
 }
