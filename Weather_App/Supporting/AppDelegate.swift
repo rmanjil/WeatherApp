@@ -10,10 +10,9 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Networking.initialize(with: Environment.networkConfig())
         return true
     }
 
@@ -34,3 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+enum Environment {
+    static func networkConfig() -> NetworkingConfiguration {
+        guard let baseURL = Bundle.main.infoDictionary?["BASE_URL"] as? String,
+              let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String else {
+            assertionFailure("check for APP_API_BASE_URL, APP_CLIENT_ID and APP_CLIENT_SECRET in Info.plist and Target's Build Setting")
+            return NetworkingConfiguration(baseURL: "", apiKey: "")
+        }
+        return NetworkingConfiguration(baseURL: baseURL, apiKey: apiKey)
+    }
+}

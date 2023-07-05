@@ -11,16 +11,13 @@ struct NetworkingConfiguration {
     
     /// The baseURL for the API
     let baseURL: String
-    let clientId: String
-    let clientSecret: String
-    
+    let apiKey: String
     /// The url session connfiguration
     let sessionConfiguration: URLSessionConfiguration
     
-    public init(baseURL: String, clientId: String, clientSecret: String, sessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.default) {
+    public init(baseURL: String, apiKey: String, sessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.default) {
         self.baseURL = baseURL
-        self.clientId = clientId
-        self.clientSecret = clientSecret
+        self.apiKey = apiKey
         self.sessionConfiguration = sessionConfiguration
     }
     

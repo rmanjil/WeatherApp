@@ -33,6 +33,9 @@
 		2A7531D92A555447003ABC27 /* NetworkingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531C52A555446003ABC27 /* NetworkingConfiguration.swift */; };
 		2A7531DA2A555447003ABC27 /* NetworkingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531C62A555446003ABC27 /* NetworkingRouter.swift */; };
 		2A7531DD2A5554B9003ABC27 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2A7531DC2A5554B9003ABC27 /* SwiftKeychainWrapper */; };
+		2A7531E02A55630D003ABC27 /* WeatherRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531DF2A55630D003ABC27 /* WeatherRouter.swift */; };
+		2A7531E32A55648E003ABC27 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531E22A55648E003ABC27 /* WeatherManager.swift */; };
+		2A7531E52A5566A4003ABC27 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7531E42A5566A4003ABC27 /* LocationManager.swift */; };
 		2AF5928E2A552EA200DD763E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF5928D2A552EA200DD763E /* AppDelegate.swift */; };
 		2AF592902A552EA200DD763E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF5928F2A552EA200DD763E /* SceneDelegate.swift */; };
 		2AF592972A552EA400DD763E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AF592962A552EA400DD763E /* Assets.xcassets */; };
@@ -85,6 +88,9 @@
 		2A7531C42A555446003ABC27 /* RequestMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaker.swift; sourceTree = "<group>"; };
 		2A7531C52A555446003ABC27 /* NetworkingConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingConfiguration.swift; sourceTree = "<group>"; };
 		2A7531C62A555446003ABC27 /* NetworkingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRouter.swift; sourceTree = "<group>"; };
+		2A7531DF2A55630D003ABC27 /* WeatherRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRouter.swift; sourceTree = "<group>"; };
+		2A7531E22A55648E003ABC27 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		2A7531E42A5566A4003ABC27 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2AF5928A2A552EA200DD763E /* Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF5928D2A552EA200DD763E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AF5928F2A552EA200DD763E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +223,23 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		2A7531DE2A5562C9003ABC27 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531DF2A55630D003ABC27 /* WeatherRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2A7531E12A556474003ABC27 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				2A7531E22A55648E003ABC27 /* WeatherManager.swift */,
+				2A7531E42A5566A4003ABC27 /* LocationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		2AF592812A552EA200DD763E = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +263,8 @@
 		2AF5928C2A552EA200DD763E /* Weather_App */ = {
 			isa = PBXGroup;
 			children = (
+				2A7531E12A556474003ABC27 /* Manager */,
+				2A7531DE2A5562C9003ABC27 /* Router */,
 				2A7531AD2A555446003ABC27 /* Networking */,
 				2A7531AA2A553AB5003ABC27 /* Protocol */,
 				2A7531A72A553A57003ABC27 /* Extension */,
@@ -424,6 +449,7 @@
 			files = (
 				2A7531D22A555447003ABC27 /* Networking.swift in Sources */,
 				2A7531C72A555447003ABC27 /* Encoding.swift in Sources */,
+				2A7531E52A5566A4003ABC27 /* LocationManager.swift in Sources */,
 				2A7531D42A555447003ABC27 /* HTTPMethod.swift in Sources */,
 				2A7531CB2A555447003ABC27 /* Container.swift in Sources */,
 				2AF5928E2A552EA200DD763E /* AppDelegate.swift in Sources */,
@@ -433,6 +459,7 @@
 				2A7531CA2A555447003ABC27 /* Meta.swift in Sources */,
 				2A7531D82A555447003ABC27 /* RequestMaker.swift in Sources */,
 				2A7531D02A555447003ABC27 /* KeyChainManager.swift in Sources */,
+				2A7531E02A55630D003ABC27 /* WeatherRouter.swift in Sources */,
 				2A7531CE2A555447003ABC27 /* ErrorMessage.swift in Sources */,
 				2A7531D52A555447003ABC27 /* TokenManager.swift in Sources */,
 				2A7531DA2A555447003ABC27 /* NetworkingRouter.swift in Sources */,
@@ -443,6 +470,7 @@
 				2A7531A42A5539FF003ABC27 /* BaseScreen.swift in Sources */,
 				2A7531D92A555447003ABC27 /* NetworkingConfiguration.swift in Sources */,
 				2A7531D12A555447003ABC27 /* Logger.swift in Sources */,
+				2A7531E32A55648E003ABC27 /* WeatherManager.swift in Sources */,
 				2A7531D32A555447003ABC27 /* ResponseParser.swift in Sources */,
 				2A7531CF2A555447003ABC27 /* Connectivity.swift in Sources */,
 				2AF592902A552EA200DD763E /* SceneDelegate.swift in Sources */,
@@ -613,8 +641,10 @@
 		2AF592B52A552EA500DD763E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_KEY = "cac8c381dc9771b023d7c7e1b50ca3ef\n";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BaseURL = "https://api.openweathermap.org/data/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68AW935KPY;
@@ -644,8 +674,10 @@
 		2AF592B62A552EA500DD763E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_KEY = "cac8c381dc9771b023d7c7e1b50ca3ef\n";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BaseURL = "https://api.openweathermap.org/data/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68AW935KPY;

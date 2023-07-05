@@ -21,6 +21,10 @@ class Networking: NetworkConformable {
     /// The networking configuration
     private var config: NetworkingConfiguration?
     
+    var apiKey: String? {
+        config?.apiKey
+    }
+    
     /// Method to set the configuration from client side
     /// - Parameter config: The networking configuration
     static func initialize(with config: NetworkingConfiguration) {
