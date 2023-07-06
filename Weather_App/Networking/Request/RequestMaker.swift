@@ -46,7 +46,7 @@ struct RequestMaker {
             let request: URLRequest
             var parameter: Parameters = [:]
             if  multipart.isEmpty { request = try requestBuilder.getRequest() } else {
-               let multi =  try requestBuilder.getMultipartRequest()
+                let multi =  try requestBuilder.getMultipartRequest()
                 request = multi.request
                 parameter = multi.parameters
             }
@@ -59,7 +59,7 @@ struct RequestMaker {
     
     private func tokenValidation<O>(_ session: URLSession, request: URLRequest, parameters: Parameters = [:], multipart: [File] = []) async -> NetworkResult<O> {
         if  router.needsAuthorization,  await !updateTokenIfNeeded()  {
-                return .failure(NetworkingError("TOKEN_EXPIRE"))
+            return .failure(NetworkingError("TOKEN_EXPIRE"))
         }
         return await checkMultipartThenRequest(session, request: request, parameters: parameters, multipart: multipart)
     }
@@ -72,27 +72,27 @@ struct RequestMaker {
     }
     
     private func refreshToken() async -> Bool {
-//        do {
-//            let request = try RequestBuilder(router: AuthRouter.refreshToken(tokenManager.param), config: config).getRequest()
-//            let session  = URLSession(configuration: config.sessionConfiguration)
-//            let result: NetworkResult<ApiResponse<AuthModel>> = await normalRequest(session, request: request)
-//            switch result {
-//            case .success(let response):
-//                guard let object = response.object?.data else { break }
-//                tokenManager.token = object
-//                return true
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//            KeyChainManager().clear(.authModel)
-//            NotificationCenter.default.post(name: .tokenExpire, object: nil)
-//
-//            return false
-//        } catch {
-//            print(error.localizedDescription)
-//            return false
-//        }
-        true 
+        //        do {
+        //            let request = try RequestBuilder(router: AuthRouter.refreshToken(tokenManager.param), config: config).getRequest()
+        //            let session  = URLSession(configuration: config.sessionConfiguration)
+        //            let result: NetworkResult<ApiResponse<AuthModel>> = await normalRequest(session, request: request)
+        //            switch result {
+        //            case .success(let response):
+        //                guard let object = response.object?.data else { break }
+        //                tokenManager.token = object
+        //                return true
+        //            case .failure(let error):
+        //                print(error.localizedDescription)
+        //            }
+        //            KeyChainManager().clear(.authModel)
+        //            NotificationCenter.default.post(name: .tokenExpire, object: nil)
+        //
+        //            return false
+        //        } catch {
+        //            print(error.localizedDescription)
+        //            return false
+        //        }
+        true
     }
     
     private func checkMultipartThenRequest<O>(_ session: URLSession, request: URLRequest, parameters: Parameters, multipart: [File]) async -> NetworkResult<O> {
@@ -103,18 +103,34 @@ struct RequestMaker {
     }
     
     private func normalRequest<O>(_ session: URLSession, request: URLRequest) async -> NetworkResult<O> {
+        var data: Data? = nil
         do {
-            let (data, response)  = try await session.data(for: request)
-            Logger.log(response, request: request, data: data)
-            let object =  try JSONDecoder().decode(O.self, from: data)
-            let networkResponse = NetworkingResponse(router: router, data: data, request: request, response: response, object: object)
-            if networkResponse.statusCode == 401 {
-                guard await refreshToken()  else {
-                    return .failure(NetworkingError("TOKEN_EXPIRE"))
-                }
-                return  await normalRequest(session, request: request)
-            }
+            let (responseData, response)  = try await session.data(for: request)
+            data = responseData
+            Logger.log(response, request: request, data: responseData)
+            let object =  try JSONDecoder().decode(O.self, from: responseData)
+            let networkResponse = NetworkingResponse(router: router, data: responseData, request: request, response: response, object: object)
+            //            if networkResponse.statusCode == 401 {
+            //                guard await refreshToken()  else {
+            //                    return .failure(NetworkingError("TOKEN_EXPIRE"))
+            //                }
+            //                return  await normalRequest(session, request: request)
+            //            }
             return .success(networkResponse)
+        } catch {
+            if let data {
+              return  decodeAPIError(from: data)
+            } else {
+                return .failure(NetworkingError(error))
+            }
+        }
+    }
+    
+    // This function tries to decode the data into an APIError
+    private func decodeAPIError<O>(from data: Data) -> NetworkResult<O> {
+        do {
+            let apiError = try JSONDecoder().decode(APIError.self, from: data)
+            return .failure(NetworkingError(apiError.message, code: apiError.cod))
         } catch {
             return .failure(NetworkingError(error))
         }

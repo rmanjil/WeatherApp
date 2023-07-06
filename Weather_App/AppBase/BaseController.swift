@@ -102,7 +102,7 @@ open class BaseController: UIViewController, StoryboardInitializable {
     
     open func setupUI() {}
     open func observeEvents() {}
-    func observeScreen() {}
+    open func observeScreen() {}
     
     // MARK: - Private Methods
     private func setupBackButton() {

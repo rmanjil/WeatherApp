@@ -24,6 +24,7 @@ extension UIImage {
     private static let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
     
     static let back = UIImage(systemName: "chevron.backward", withConfiguration: symbolConfig)
+    static let menu = UIImage(systemName: "chevron.down", withConfiguration: symbolConfig)
 
     
 }

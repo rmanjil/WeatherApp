@@ -16,5 +16,11 @@ func addApiKey(parameter: Parameters) -> Parameters {
 }
 
 class WeatherManager {
+    let networking = Networking.default
     
+    
+    func fetchCurrentWeather(parameter: Parameters) async throws -> WeatherData {
+        let parameter = addApiKey(parameter: parameter)
+        return try await networking.dataRequest(router: WeatherRouter.weather(parameter), type: WeatherData.self)
+    }
 }

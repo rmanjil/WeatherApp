@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        _ = Connectivity.default.status
         Networking.initialize(with: Environment.networkConfig())
         return true
     }
@@ -41,6 +42,6 @@ enum Environment {
             assertionFailure("check for APP_API_BASE_URL, APP_CLIENT_ID and APP_CLIENT_SECRET in Info.plist and Target's Build Setting")
             return NetworkingConfiguration(baseURL: "", apiKey: "")
         }
-        return NetworkingConfiguration(baseURL: baseURL, apiKey: apiKey)
+        return NetworkingConfiguration(baseURL: baseURL, apiKey: apiKey) //"cf9221839ec238d0c609267eff5fb5f8"
     }
 }
