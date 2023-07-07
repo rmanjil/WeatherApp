@@ -61,7 +61,7 @@ open class BaseController: UIViewController, StoryboardInitializable {
     lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: .back, style: .plain, target: self, action: #selector(backButtonClicked))
         button.tag = 1
-        button.tintColor = .white
+        button.tintColor = .black
         return button
     }()
     

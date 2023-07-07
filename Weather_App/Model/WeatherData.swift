@@ -43,10 +43,10 @@ struct Wind: Decodable {
 }
 
 struct Sys: Decodable {
-    let id: Int
+    let id: Int?
     let country: String
     let sunset: Int
-    let type: Int
+    let type: Int?
     let sunrise: Int
 }
 

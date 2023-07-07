@@ -10,19 +10,36 @@ import SwiftUI
 struct CityListScreen: View {
     @ObservedObject var viewModel: CityListViewModel
     @State private var searchText = ""
+    @State private var selectedCity: CityModel? = nil
+    @SwiftUI.Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
             SearchBar(text: $searchText)
                 .padding()
-            List {
-                ForEach(viewModel.filteredCityModels(searchText: searchText), id: \.id) { cityModel in
-                    Text(cityModel.name)
+            ScrollView {
+                LazyVStack(alignment: .leading) {
+                    ForEach(viewModel.filteredCityModels(searchText: searchText), id: \.id) { cityModel in
+                        Button(action: {
+                            showWeather(of: cityModel.name)
+                        }) {
+                            Text(cityModel.name).padding()
+                        }
+                    }
                 }
             }
+            .frame(maxWidth: .infinity)
         }
         .navigationTitle("City List")
     }
+    
+    private func showWeather(of city: String) {
+        presentationMode.wrappedValue.dismiss()
+        if let navController = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController as? UINavigationController {
+            navController.pushViewController(CurrentWeatherController(baseScreen: CurrentWeatherScreen(), baseViewModel: CurrentWeatherViewModel(cityName: city)), animated: true)
+        }
+    }
+    
 }
 
 struct CityListScreen_Previews: PreviewProvider {

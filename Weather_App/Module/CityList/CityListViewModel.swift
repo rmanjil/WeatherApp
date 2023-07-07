@@ -28,6 +28,7 @@ class CityListViewModel: ObservableObject {
     init() {
        extractCityModelFromJsonFile()
     }
+    
     private func extractCityModelFromJsonFile() {
         guard let jsonURL = Bundle.main.url(forResource: "CityJson", withExtension: "json") else {
             print("JSON file not found.")
@@ -36,7 +37,8 @@ class CityListViewModel: ObservableObject {
         
         do {
             let jsonData = try Data(contentsOf: jsonURL)
-            cityModels = try JSONDecoder().decode([CityModel].self, from: jsonData)
+            let decoder = JSONDecoder()
+            cityModels = try decoder.decode([CityModel].self, from: jsonData)
         } catch {
             print("Error decoding JSON: \(error)")
         }

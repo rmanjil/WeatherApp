@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         _ = Connectivity.default.status
         Networking.initialize(with: Environment.networkConfig())
+        nabbar()
         return true
     }
 
@@ -31,6 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    
+    private func nabbar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .gray
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().tintColor = .black
+       
+    }
 
 }
 

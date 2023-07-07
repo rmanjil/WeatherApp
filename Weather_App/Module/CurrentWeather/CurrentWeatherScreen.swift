@@ -128,7 +128,7 @@ class CurrentWeatherScreen: BaseScreen {
         
         NSLayoutConstraint.activate([
             main.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            main.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            main.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             main.centerXAnchor.constraint(equalTo: centerXAnchor),
             main.heightAnchor.constraint(equalTo: main.widthAnchor),
             

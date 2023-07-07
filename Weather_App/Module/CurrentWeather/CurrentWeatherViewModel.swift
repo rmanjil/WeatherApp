@@ -12,19 +12,24 @@ class CurrentWeatherViewModel: BaseViewModel {
     
     let manager: WeatherManager
     @Published var weather: WeatherData?
+    let cityName: String
     
-    override init() {
+    init(cityName: String) {
+        self.cityName = cityName
         manager = WeatherManager()
+        super.init()
     }
     
     func fetch() {
-        guard !LocationManager.shared.getParameter.isEmpty else {
-            assertionFailure("no location")
-            return
-            
+        if cityName.isEmpty {
+            guard !LocationManager.shared.getParameter.isEmpty  else {
+                assertionFailure("no location")
+                return
+                
+            }
         }
         Task {
-            var parameter = LocationManager.shared.getParameter
+            var parameter = cityName.isEmpty ? LocationManager.shared.getParameter : ["q": cityName]
             parameter["units"] = "metric"
             do {
                 weather = try await manager.fetchCurrentWeather(parameter: parameter)

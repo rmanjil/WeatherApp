@@ -37,6 +37,7 @@ class CurrentWeatherController: BaseController {
         super.viewDidLoad()
         setupTableView()
       
+        navigationItem.title = viewModel.cityName
         navigationItem.rightBarButtonItem = menuButton
         
         _ = LocationManager.shared

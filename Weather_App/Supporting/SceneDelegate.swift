@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     func appLaunch() {
         
-        window?.rootViewController =  UINavigationController(rootViewController: CurrentWeatherController(baseScreen: CurrentWeatherScreen(), baseViewModel: CurrentWeatherViewModel()))
+        window?.rootViewController =  UINavigationController(rootViewController: CurrentWeatherController(baseScreen: CurrentWeatherScreen(), baseViewModel: CurrentWeatherViewModel(cityName: "")))
         window?.makeKeyAndVisible()
     }
 
