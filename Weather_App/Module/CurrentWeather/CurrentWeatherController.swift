@@ -6,21 +6,18 @@
 //
 
 import UIKit
+import SwiftUI
 
 class CurrentWeatherController: BaseController {
     
     lazy var menuButton: UIBarButtonItem = {
         let menu = UIMenu(title: "", children: [
-                   UIAction(title: "Option 1", handler: { _ in
-                       // Handle Option 1 selection
-                   }),
-                   UIAction(title: "Option 2", handler: { _ in
-                       // Handle Option 2 selection
-                   }),
-                   UIAction(title: "Option 3", handler: { _ in
-                       // Handle Option 3 selection
+                   UIAction(title: "City Weather", handler: { [weak self] _ in
+                       guard let self else { return }
+                       showCityList()
                    })
                ])
+        
         let button = UIBarButtonItem(image: .menu, menu: menu)
         button.tag = 1
         button.tintColor = .black
@@ -58,9 +55,16 @@ class CurrentWeatherController: BaseController {
             load(weather: value)
         }.store(in: &viewModel.bag)
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         screen.tableView.isHidden = true
+    }
+    
+    private func showCityList() {
+        let controller = UIHostingController(rootView: CityListScreen(viewModel: CityListViewModel()))
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -77,26 +81,6 @@ extension CurrentWeatherController {
             screen.weatherIconImageView.loadImage(with: URL(string: "https://openweathermap.org/img/w/\(string).png"))
         }
         screen.tableView.reloadData()
-    }
-    
-    @objc private func menu(_ sender: UIBarButtonItem) {
-        //screen.tableView.isHidden = false
-//        let menu = UIMenu(title: "", children: [
-//                   UIAction(title: "Option 1", handler: { _ in
-//                       // Handle Option 1 selection
-//                   }),
-//                   UIAction(title: "Option 2", handler: { _ in
-//                       // Handle Option 2 selection
-//                   }),
-//                   UIAction(title: "Option 3", handler: { _ in
-//                       // Handle Option 3 selection
-//                   })
-//               ])
-//
-//               let menuButton = navigationItem.rightBarButtonItem
-//               menuButton?.menu = menu
-              // menuButton?.showMenu()
-
     }
 }
 
