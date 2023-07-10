@@ -17,7 +17,7 @@ enum WeatherRouter: NetworkingRouter {
         case .weather:
             return "2.5/weather"
         case .forecast:
-            return "2.5/forecast/climate"
+            return "2.5/forecast"
         }
     }
     

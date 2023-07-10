@@ -11,7 +11,7 @@ class WeatherTableViewCell: UITableViewCell {
     
     private lazy var weatherIconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .red 
+        imageView.backgroundColor = .red
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -59,12 +59,19 @@ class CurrentWeatherScreen: BaseScreen {
     private(set) lazy var main: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .lightGray.withAlphaComponent(0.3)
+        view.backgroundColor = .magenta.withAlphaComponent(0.3)
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         return view
+    }()
+    
+    private(set) lazy var weatherIconBackgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.opacity = 0.3
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     private(set) lazy var weatherIconImageView: UIImageView = {
@@ -85,46 +92,121 @@ class CurrentWeatherScreen: BaseScreen {
     
     private(set) lazy var temperatureLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .systemBlue
+        label.font = .boldSystemFont(ofSize: 35)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private(set) lazy var descriptionLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .systemBlue
+        label.font = .boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private(set) lazy var humidityLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private(set) lazy var windLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
+//    private(set) lazy var humidityLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
+//
+//    private(set) lazy var windLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
+//
     private(set) lazy var pressureLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .systemBlue
+        label.font = .boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var bottomView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 20
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.layer.masksToBounds = true
+        view.backgroundColor = .lightGray.withAlphaComponent(0.3)
+    // Top left and top right corners
+        return view
+    }()
+    
+    // Horizontal UIStackView
+    private lazy var horizontalStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [verticalStackView1, verticalStackView2])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    // Vertical UIStackViews
+    private lazy var verticalStackView1: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [minTemp, windTemp])
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    private lazy var verticalStackView2: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [maxTemp, humidTemp])
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    private(set) lazy var minTemp: TemperatureView = {
+        let view = TemperatureView()
+        view.regularLabel.text = "Min Temp"
+        view.icon.image = UIImage(systemName: "thermometer.low")
+        return view
+    }()
+    
+    private(set) lazy var maxTemp: TemperatureView = {
+        let view = TemperatureView()
+        view.regularLabel.text = "Max Temp"
+        view.icon.image = UIImage(systemName: "thermometer.high")
+        return view
+    }()
+    
+    private(set) lazy var windTemp: TemperatureView = {
+        let view = TemperatureView()
+        view.regularLabel.text = "wind"
+        view.icon.image = UIImage(systemName: "wind")
+        return view
+    }()
+    
+    private(set) lazy var humidTemp: TemperatureView = {
+        let view = TemperatureView()
+        view.regularLabel.text = "Humidity"
+        view.icon.image = UIImage(systemName: "humidity")
+        return view
     }()
     
     override func prepareLayout() {
         super.prepareLayout()
         addSubview(main)
-       // addSubview(tableView)
+        // addSubview(tableView)
+        main.addSubview(weatherIconBackgroundImageView)
         main.addSubview(weatherIconImageView)
         main.addSubview(temperatureLabel)
         main.addSubview(descriptionLabel)
-        main.addSubview(humidityLabel)
-        main.addSubview(windLabel)
         main.addSubview(pressureLabel)
         
-        weatherIconImageView.fillSuperView()
+        weatherIconBackgroundImageView.fillSuperView()
+        
+        addSubview(bottomView)
+        bottomView.addSubview(horizontalStackView)
         
         NSLayoutConstraint.activate([
             main.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -132,7 +214,10 @@ class CurrentWeatherScreen: BaseScreen {
             main.centerXAnchor.constraint(equalTo: centerXAnchor),
             main.heightAnchor.constraint(equalTo: main.widthAnchor),
             
-            
+            weatherIconImageView.centerYAnchor.constraint(equalTo: main.centerYAnchor),
+            weatherIconImageView.centerXAnchor.constraint(equalTo: main.centerXAnchor),
+            weatherIconImageView.widthAnchor.constraint(equalToConstant: 40),
+            weatherIconImageView.heightAnchor.constraint(equalToConstant: 40),
             
             temperatureLabel.centerXAnchor.constraint(equalTo: main.centerXAnchor),
             temperatureLabel.topAnchor.constraint(equalTo: main.topAnchor, constant: 16),
@@ -140,21 +225,25 @@ class CurrentWeatherScreen: BaseScreen {
             descriptionLabel.centerXAnchor.constraint(equalTo: main.centerXAnchor),
             descriptionLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: 8),
             
-            humidityLabel.leadingAnchor.constraint(equalTo: main.leadingAnchor, constant: 16),
-            humidityLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            
-            windLabel.leadingAnchor.constraint(equalTo: main.leadingAnchor, constant: 16),
-            windLabel.topAnchor.constraint(equalTo: humidityLabel.bottomAnchor, constant: 8),
-            
+//            humidityLabel.leadingAnchor.constraint(equalTo: main.leadingAnchor, constant: 16),
+//            humidityLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
+//
+//            windLabel.leadingAnchor.constraint(equalTo: main.leadingAnchor, constant: 16),
+//            windLabel.topAnchor.constraint(equalTo: humidityLabel.bottomAnchor, constant: 8),
+//
             pressureLabel.leadingAnchor.constraint(equalTo: main.leadingAnchor, constant: 16),
-            pressureLabel.topAnchor.constraint(equalTo: windLabel.bottomAnchor, constant: 8),
+            pressureLabel.centerXAnchor.constraint(equalTo: main.centerXAnchor),
             pressureLabel.bottomAnchor.constraint(equalTo: main.bottomAnchor, constant: -16),
             
-//            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-//            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            tableView.widthAnchor.constraint(equalToConstant: 200),
-//            tableView.heightAnchor.constraint(equalToConstant: 150),
-//
+            bottomView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            bottomView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            horizontalStackView.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 12),
+            horizontalStackView.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 12),
+            horizontalStackView.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: 12),
+            horizontalStackView.bottomAnchor.constraint(equalTo: bottomView.safeAreaLayoutGuide.bottomAnchor, constant: 8)
+            
         ])
     }
 }

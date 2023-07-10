@@ -15,6 +15,10 @@ class CurrentWeatherController: BaseController {
                    UIAction(title: "City Weather", handler: { [weak self] _ in
                        guard let self else { return }
                        showCityList()
+                   }),
+                   UIAction(title: "Today  forecast", handler: { [weak self] _ in
+                       guard let self else { return }
+                       showForecast()
                    })
                ])
         
@@ -67,6 +71,12 @@ class CurrentWeatherController: BaseController {
         
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+    private func showForecast() {
+        let controller = UIHostingController(rootView: ForecastScreen(viewModel: ForecastViewModel()))
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 // MARK: - Methods
@@ -74,14 +84,16 @@ extension CurrentWeatherController {
     private func load(weather: WeatherData) {
         screen.temperatureLabel.text = "\(weather.main.temp) °C"
         screen.descriptionLabel.text = weather.weather.first?.description
-        screen.humidityLabel.text = "Humidity: \(weather.main.humidity)%"
-        screen.windLabel.text = "Wind: \(weather.wind.speed) m/s"
-        screen.pressureLabel.text = "Pressure: \(weather.main.pressure) hPa"
-        
+        screen.pressureLabel.text = "\(weather.main.pressure) hPa"
+        screen.windTemp.boldLabel.text = "\(weather.wind.speed) m/s"
+        screen.humidTemp.boldLabel.text = "\(weather.main.humidity)%"
+        screen.maxTemp.boldLabel.text = "\(weather.main.temp_max) °C"
+        screen.minTemp.boldLabel.text = "\(weather.main.temp_min) °C"
         if let string = weather.weather.first?.icon {
+            screen.weatherIconBackgroundImageView.loadImage(with: URL(string: "https://openweathermap.org/img/w/\(string).png"))
             screen.weatherIconImageView.loadImage(with: URL(string: "https://openweathermap.org/img/w/\(string).png"))
         }
-        screen.tableView.reloadData()
+        //screen.tableView.reloadData()
     }
 }
 
